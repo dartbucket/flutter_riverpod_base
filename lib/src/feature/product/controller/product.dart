@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_base/src/feature/product/repository/product.dart';
+import 'package:flutter_riverpod_base/src/feature/product/res/messages.dart';
 import 'package:flutter_riverpod_base/src/models/product.dart';
-import 'package:flutter_riverpod_base/src/res/strings.dart';
 import 'package:flutter_riverpod_base/src/utils/config.dart';
 import 'package:flutter_riverpod_base/src/utils/snackbar_service.dart';
 
@@ -20,13 +20,13 @@ class ProductController {
     return result.fold(
       (failure){
         if(AppConfig.devMode && context!=null){
-          SnackBarService.showSnackBar(context: context, message: SnackBarMessages.productLoadFailed);
+          SnackBarService.showSnackBar(context: context, message: SuccessMessage.productsFetched);
         }
         return null;
       },
       (products){
         if(AppConfig.devMode && context!=null){
-          SnackBarService.showSnackBar(context: context, message: SnackBarMessages.productLoadSuccess);
+          SnackBarService.showSnackBar(context: context, message: FailureMessage.productsFetched);
         }
         return products;
       },

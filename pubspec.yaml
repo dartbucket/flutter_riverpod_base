@@ -18,8 +18,13 @@ dependencies:
   flutter_riverpod:
   fpdart:
   http:
+  shared_preferences: ^2.0.17
 
   go_router: ^7.1.1
+
+  image_picker: ^1.0.4
+
+  flutter_svg: ^2.0.8
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +38,5 @@ flutter:
   assets:
     - assets/images/
     - assets/placeholders/
+    - assets/icons/
+    - assets/animations/

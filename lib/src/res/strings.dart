@@ -21,13 +21,6 @@ class FailureMessage {
   static const jsonParsingFailed = "FAILED TO PARSE JSON RESPONSE";
 
   static const authTokenEmpty = "AUTH TOKEN EMPTY";
-
-  static const failedToParseJson = "Failed to Parse JSON Data";
-}
-
-class SnackBarMessages {
-  static const productLoadSuccess = "Products Loaded Successfully";
-  static const productLoadFailed = "Failed To Load Products";
 }
 
 class LogLabel {

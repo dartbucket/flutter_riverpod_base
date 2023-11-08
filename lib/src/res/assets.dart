@@ -24,6 +24,18 @@ class ImageAssets{
 
 class AnimationAssets{
   /// Contains all the paths of animations used across the project.
+  static const _base = BasePaths.baseImagePath;
+
+  static const sampleAnimationPath = "$_base/animation.png";
+
+}
+
+class IconAssets{
+  /// Contains all the paths of animations used across the project.
+  static const _base = BasePaths.baseImagePath;
+
+  static const sampleIconPath = "$_base/icon.png";
+
 }
 
 class PlaceholderAssets {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod_base/src/commons/views/splash.dart';
+import 'package:flutter_riverpod_base/src/global/views/splash.dart';
 import 'package:flutter_riverpod_base/src/feature/home/view/home.dart';
 import 'package:go_router/go_router.dart';
 

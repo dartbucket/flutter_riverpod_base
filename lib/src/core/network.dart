@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod_base/src/commons/providers/common_providers.dart';
+import 'package:flutter_riverpod_base/src/global/providers/common_providers.dart';
 import 'package:flutter_riverpod_base/src/res/strings.dart';
 import 'package:flutter_riverpod_base/src/utils/config.dart';
 import 'package:fpdart/fpdart.dart';
@@ -12,24 +12,24 @@ import 'core.dart';
 
 /// Watch apiProvider to make sure to have the latest authToken passed.
 
-final apiProvider = StateProvider((ref){
+final networkRepoProvider = StateProvider((ref){
   final authToken = ref.watch(authTokenProvider);
-  return API(authToken: authToken);
+  return NetworkRepo(authToken: authToken);
 });
 
 /// Contains common methods required for client side APIs [GET, POST, PUT, DELETE].
 /// Pass the [url] from endpoints using [Endpoints] class.
 /// Every method has an optional parameter [requireAuth] default [true].
 /// Set [requireAuth] to [false] if [authToken] is Empty.
-class API{
+class NetworkRepo{
   final String? _authToken;
 
-  API({ required String? authToken}) : _authToken = authToken;
+  NetworkRepo({ required String? authToken}) : _authToken = authToken;
 
   FutureEither<Response> getRequest({required String url, bool requireAuth = true}) async {
     final Map<String, String> requestHeaders = {
       "Content-Type":"application/json",
-      "Authorization": "token=$_authToken"
+      "Cookie": "token=$_authToken"
     };
     if(requireAuth){
       if((_authToken ?? '').isEmpty) {
@@ -52,7 +52,7 @@ class API{
   FutureEither<Response> postRequest({required String url, dynamic body, bool requireAuth = true}) async {
     final Map<String, String> requestHeaders = {
       "Content-Type":"application/json",
-      "Authorization": "token=$_authToken"
+      "Cookie": "token=$_authToken"
     };
     if(requireAuth){
       if((_authToken ?? '').isEmpty) {
@@ -76,7 +76,7 @@ class API{
   FutureEither<Response> putRequest({required String url, dynamic body, bool requireAuth = true}) async {
     final Map<String, String> requestHeaders = {
       "Content-Type":"application/json",
-      "Authorization": "token=$_authToken"
+      "Cookie": "token=$_authToken"
     };
     if(requireAuth){
       if((_authToken ?? '').isEmpty) {
@@ -100,7 +100,7 @@ class API{
   FutureEither<Response> deleteRequest({required String url, dynamic body, bool requireAuth = true}) async {
     final Map<String, String> requestHeaders = {
       "Content-Type":"application/json",
-      "Authorization": "token=$_authToken"
+      "Cookie": "token=$_authToken"
     };
     if(requireAuth){
       if((_authToken ?? '').isEmpty) {
@@ -113,7 +113,7 @@ class API{
       log('BODY : $body', name: LogLabel.httpDelete);
     }
     try{
-      final response = await put(Uri.parse(url), body: jsonEncode(body), headers: requestHeaders);
+      final response = await delete(Uri.parse(url), body: jsonEncode(body), headers: requestHeaders);
       log('RESPONSE : ${response.body}', name: LogLabel.httpDelete);
       return Right(response);
     }catch(e, stktrc){
