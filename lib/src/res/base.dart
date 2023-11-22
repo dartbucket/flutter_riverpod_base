@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod_base/src/utils/config.dart';
 
 class BasePaths{
+
+  const BasePaths._();
+
   static const baseImagePath = "assets/images";
   static const baseAnimationPath = "assets/animations";
   static const baseIconPath = "assets/icons";

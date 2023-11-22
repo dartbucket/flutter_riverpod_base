@@ -15,6 +15,9 @@ import 'package:flutter_riverpod_base/src/res/base.dart';
 /// ImageAssets.sampleImagePng
 /// ```
 class ImageAssets{
+
+  const ImageAssets._(); 
+
   static const _base = BasePaths.baseImagePath;
 
   static const sampleImagePath = "$_base/image.png";
@@ -23,6 +26,9 @@ class ImageAssets{
 }
 
 class AnimationAssets{
+
+  const AnimationAssets._();
+
   /// Contains all the paths of animations used across the project.
   static const _base = BasePaths.baseImagePath;
 
@@ -31,6 +37,7 @@ class AnimationAssets{
 }
 
 class IconAssets{
+  const IconAssets._();
   /// Contains all the paths of animations used across the project.
   static const _base = BasePaths.baseImagePath;
 
@@ -39,6 +46,9 @@ class IconAssets{
 }
 
 class PlaceholderAssets {
+
+  const PlaceholderAssets._();
+
   static const _base = BasePaths.basePlaceholderPath;
 
   static const carouselCardJpeg = "$_base/carousel_placehoder.jpeg";
