@@ -2,10 +2,10 @@
 import 'dart:convert';
 
 class Product {
-    final int id;
-    final String title;
-    final String description;
-  Product({
+  final int id;
+  final String title;
+  final String description;
+  const Product({
     required this.id,
     required this.title,
     required this.description,
@@ -23,14 +23,16 @@ class Product {
     );
   }
 
+  // TODO: standard is toJson();.
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
+      'description': description,
       'id': id,
       'title': title,
-      'description': description,
     };
   }
 
+  // TODO: standard is fromJson();.
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
       id: map['id'] as int,
@@ -39,23 +41,28 @@ class Product {
     );
   }
 
+  // TODO: consider using the library  json_serializable.
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) => Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  // TODO: consider using the library  json_serializable.
+  factory Product.fromJson(String source) =>
+      Product.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'Product(id: $id, title: $title, description: $description)';
+  String toString() =>
+      'Product(id: $id, title: $title, description: $description)';
 
+  // TODO: consider using freezed or equatable.
   @override
   bool operator ==(covariant Product other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.title == title &&
-      other.description == description;
+
+    return other.id == id &&
+        other.title == title &&
+        other.description == description;
   }
 
+  // TODO: consider using freezed or equatable.
   @override
   int get hashCode => id.hashCode ^ title.hashCode ^ description.hashCode;
 }

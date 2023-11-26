@@ -1,21 +1,24 @@
-import 'dart:convert';
+// TODO: Remove unused import
 import 'dart:developer';
 import 'dart:io';
-import 'package:flutter_riverpod_base/src/core/core.dart';
-import 'package:path/path.dart' as path;
-import 'package:http/http.dart' as http;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../res/endpoints.dart';
 
-final fileRepoProvider = Provider((ref){
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_base/src/core/core.dart';
+import 'package:http/http.dart' as http;
+// TODO: Import Path package
+import 'package:path/path.dart' as path;
+
+final fileRepoProvider = Provider((ref) {
   final api = ref.watch(networkRepoProvider);
   return FileRepo(api: api);
 });
 
 class FileRepo {
+  // TODO: Remove unused variable or deprecate it.
   final NetworkRepo _api;
-  FileRepo({required NetworkRepo api}):_api = api;
+  FileRepo({required NetworkRepo api}) : _api = api;
 
+  // TODO: Remove unused code.
   // Future<UplaodInfo?> _getUploadUrl ({
   //   required String extension,
   //   required UploadFileType type,
@@ -50,13 +53,15 @@ class FileRepo {
   //   return null;
   // }
 
-  Future<bool> _upload({ required File file, required String uploadUrl }) async {
+  Future<bool> _upload({required File file, required String uploadUrl}) async {
     log('Uploading File to $uploadUrl');
-    final response = await http.put(Uri.parse(uploadUrl), body: file.readAsBytesSync());
+    final response =
+        await http.put(Uri.parse(uploadUrl), body: file.readAsBytesSync());
     return (response.statusCode == 200);
   }
 
-  String _getFileExstension (File file) {
+  // TODO: Remove unused code.
+  String _getFileExstension(File file) {
     final String filePath = file.path;
     final String extension = path.extension(filePath);
     final ext = extension.substring(1);

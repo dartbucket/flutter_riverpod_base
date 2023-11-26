@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod_base/src/res/base.dart';
-
+// TODO: consider using OOP concepts like abstract, mixin, etc..
 
 /// Contains all the paths of image used across the project.
 /// Every image path variable name must contain a name and its extension.
@@ -14,9 +14,8 @@ import 'package:flutter_riverpod_base/src/res/base.dart';
 /// ```dart
 /// ImageAssets.sampleImagePng
 /// ```
-class ImageAssets{
-
-  const ImageAssets._(); 
+class ImageAssets {
+  const ImageAssets._();
 
   static const _base = BasePaths.baseImagePath;
 
@@ -25,31 +24,29 @@ class ImageAssets{
   static const profileImageJpeg = "$_base/profile.jpeg";
 }
 
-class AnimationAssets{
-
+class AnimationAssets {
   const AnimationAssets._();
 
   /// Contains all the paths of animations used across the project.
   static const _base = BasePaths.baseImagePath;
 
   static const sampleAnimationPath = "$_base/animation.png";
-
 }
 
-class IconAssets{
+class IconAssets {
   const IconAssets._();
+
   /// Contains all the paths of animations used across the project.
   static const _base = BasePaths.baseImagePath;
 
   static const sampleIconPath = "$_base/icon.png";
-
 }
 
 class PlaceholderAssets {
-
   const PlaceholderAssets._();
 
   static const _base = BasePaths.basePlaceholderPath;
 
+  // TODO: you have a type consider using SpellChecker extension.
   static const carouselCardJpeg = "$_base/carousel_placehoder.jpeg";
 }
