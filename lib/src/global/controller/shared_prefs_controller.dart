@@ -3,18 +3,22 @@ import 'package:flutter_riverpod_base/src/core/core.dart';
 import 'package:flutter_riverpod_base/src/global/repo/shared_prefs_repo.dart';
 import 'package:flutter_riverpod_base/src/models/user.dart';
 
-final sharedPrefsControllerPovider = Provider((ref){
+// TODO: prefer class over global variables.
+final sharedPrefsControllerPovider = Provider((ref) {
   final repo = ref.watch(sharedPrefsRepoProvider);
+
   return SharedPrefsController(repo: repo);
 });
 
-
+// TODO: this class looks like handle the user only the name isn't accurate.
 class SharedPrefsController {
   final SharedPrefsRepo _repo;
 
-  SharedPrefsController({required SharedPrefsRepo repo}):_repo = repo;
+  SharedPrefsController({required SharedPrefsRepo repo}) : _repo = repo;
 
-  Future<String?> getCookie() async {
+  // TODO use the the get keyword Future<User?> get user async => _repo.getCookie();.
+
+  Future<String?> getCookie() {
     return _repo.getCookie();
   }
 
@@ -22,15 +26,17 @@ class SharedPrefsController {
     await _repo.setCookie(cookie);
   }
 
-  Future<User?> getUser() async {
+  // TODO use the the get keyword Future<User?> get user async => _repo.getCurrentUser();.
+  Future<User?> getUser() {
     return _repo.getCurrentUser();
   }
 
-  FutureVoid setUser({required User user}) async {
+  // TODO: this might not always succeed, add a try catch block.
+  FutureVoid setUser({required User user}) {
     _repo.setCurrentUser(user);
   }
 
-  FutureVoid clear() async {
+  FutureVoid clear() {
     return _repo.clear();
   }
 }

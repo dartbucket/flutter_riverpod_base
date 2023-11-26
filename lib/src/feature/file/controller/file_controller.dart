@@ -8,18 +8,23 @@ import 'package:image_picker/image_picker.dart';
 
 final fileControllerProvider = Provider((ref) => FileController());
 
+// TODO: Is this a feature? or a core component?
+// TODO: Is 'file' the right folder name for this?
+
 class FileController {
+  // TODO: use const when you can. (FileController > const FileController())
   final _name = "FILE_CONTROLLER";
 
+  // TODO: name your function properly, this only select an image not a file.
   Future<File?> selectFile() async {
-    try{
+    try {
       final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(source:ImageSource.gallery);
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
       File imageFile = File(image!.path);
       log(SuccessMessage.fileSelected, name: _name);
       return imageFile;
-    } catch(e){
-      if(AppConfig.devMode){
+    } catch (e) {
+      if (AppConfig.devMode) {
         log(FailureMessage.fileSelected, name: _name);
       }
       return null;
